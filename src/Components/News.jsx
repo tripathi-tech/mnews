@@ -9,12 +9,11 @@ const News = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                console.log("Fetching news...");
-
-                // Call your Flask API endpoint
-                const response = await axios.get('http://127.0.0.1:5000/news');
-
-                console.log("Response received:", response.data);
+                const response = await axios.get('https://news-1u4o0wxg4-tripathitechs-projects.vercel.app/news', {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                });
                 setArticles(response.data);
             } catch (err) {
                 console.error("Error fetching news:", err);
@@ -23,6 +22,7 @@ const News = () => {
                 setLoading(false);
             }
         };
+
 
         fetchNews();
     }, []);
