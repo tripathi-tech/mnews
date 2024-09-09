@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {Helmet} from "react-helmet";
 
 const News = () => {
     const [articles, setArticles] = useState([]);
@@ -44,6 +45,11 @@ const News = () => {
 
     return (
         <div className="m-5">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>News Bharat - News India</title>
+                <link rel="canonical" href="https://newsbharat.vercel.app/" />
+            </Helmet>
             {articles.map((article, index) => (
                 <div key={index} className="group mx-2 mt-10 grid max-w-screen-lg grid-cols-1 space-x-8 overflow-hidden rounded-lg border text-gray-700 shadow transition hover:shadow-lg sm:mx-auto sm:grid-cols-5">
                     <a href={article.link} className="col-span-2 text-left text-gray-600 hover:text-gray-700" target="_blank" rel="noopener noreferrer">
