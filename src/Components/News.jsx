@@ -24,9 +24,20 @@ const News = () => {
         fetchNews();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
+    // Loading state
+    if (loading) {
+        return (
+            <div className="relative flex justify-center items-center">
+                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
+                <img src="https://www.svgrepo.com/show/509001/avatar-thinking-9.svg" className="rounded-full h-28 w-28" alt="Loading avatar" />
+            </div>
+        );
+    }
+
+    // Error state
     if (error) return <p>Error fetching news: {error.message}</p>;
 
+    // No articles found
     if (articles.length === 0) return <p>No news articles found.</p>;
 
     return (
